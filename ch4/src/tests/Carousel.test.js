@@ -13,16 +13,19 @@ describe('Carousel', () => {
       imgUrl: 'https://example.com/slide1.png',
       description: 'Slide 1',
       attribution: 'Uno Pizzeria',
+      imgHeight: 500,
     },
     {
       imgUrl: 'https://example.com/slide2.png',
       description: 'Slide 2',
       attribution: 'Dos Equis',
+      imgHeight: 500,
     },
     {
       imgUrl: 'https://example.com/slide3.png',
       description: 'Slide 3',
       attribution: 'Three Amigos',
+      imgHeight: 500,
     },
   ];
 
@@ -83,9 +86,9 @@ describe('Carousel', () => {
   it('renders the current slide as a CarouselSlide', () => {
     let slideProps;
     slideProps = wrapper.find(CarouselSlide).props();
-    expect(slideProps).toEqual(slides[0]);
+    expect(slideProps).toEqual({ ...CarouselSlide.defaultProps, ...slides[0] });
     wrapper.setState({ slideIndex: 1});
     slideProps = wrapper.find(CarouselSlide).props();
-    expect(slideProps).toEqual(slides[1]);
+    expect(slideProps).toEqual({ ...CarouselSlide.defaultProps, ...slides[1] });
   });
 });
